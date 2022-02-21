@@ -39,6 +39,7 @@ def get_main_option():
     print("1: Generate new password (unsaved)")
     print("2: Generate new password for site (saved)")
     print("3: View Password for site")
+    print("4: Check Password Strength Against Common Password List")
     option = int(input("Please select option: "))
 
     if option == 1:
@@ -47,6 +48,8 @@ def get_main_option():
         generate_password_save()
     elif option == 3:
         get_main_option()
+    elif option == 4:
+        check_password_strength()
     else:
         print("Wrong number entered, please enter a valid number: ")
         print("")
@@ -76,6 +79,44 @@ def generate_password_save():
         else:
              True
 
+
+def check_password_strength():
+    cls()
+    print("Check Password Strength")
+    print("")
+    print("How this works:")
+    print("1: You enter the password")
+    print("2: Your password is checked if it has been used in one of a couple main word lists")
+    print("3: If your password is found in the list then it will be a very weak and common password")
+    print("4: If your password isn't found then you will be told, this however does not mean that your password is safe")
+    print("")
+    password=input("Please enter the password you want to check: ")
+    print("")
+    passwordfound=check_password_wordlist(password)
+
+    if passwordfound == True:
+        print("Your password was found in the common password file")
+        print("It is recommended that you change any logins that use this password")
+        print("")
+        return_to_menu=input("Would you like to return to the menu?")
+    else:
+        print("Your ")
+
+
+def check_password_wordlist(password):
+    print(password)
+    rockyou_passwords=open('rockyou.txt','r', encoding="utf8")
+    Lines = rockyou_passwords.readlines()
+    count_rock_you=0
+    found_password=False
+    for line in Lines:
+        if line.strip() == password:
+            print("Password found in password list!")
+            found_password=True
+            break
+        else:
+            count_rock_you += 1
+    return found_password
 
 
 def cls():
