@@ -57,7 +57,6 @@ def get_main_option():
 
 
 def generate_password_save():
-    cls()
     print("Create password and save")
     print("")
     site_name=input("Name of site: ")
@@ -98,13 +97,22 @@ def check_password_strength():
         print("Your password was found in the common password file")
         print("It is recommended that you change any logins that use this password")
         print("")
-        return_to_menu=input("Would you like to return to the menu?")
+        print("Returning to menu")
+        print("")
+        main()
+
     else:
-        print("Your ")
+        print("Your password was not found in the common passwords file")
+        print("However, this does not mean that your password has the best security.")
+        print("")
+        print("Returning to menu")
+        print("")
+        main()
+
 
 
 def check_password_wordlist(password):
-    print(password)
+    cls()
     rockyou_passwords=open('rockyou.txt','r', encoding="utf8")
     Lines = rockyou_passwords.readlines()
     count_rock_you=0
