@@ -71,12 +71,18 @@ def generate_password_save():
     print("Site Password: " + site_pw)
     print("")
 
-    while True:
-        user_happy = input("Are you happy with this information? y/n: ")
-        if user_happy == "Y" or "y" or "N" or "n":
-            False
-        else:
-             True
+    user_happy = input("Are you happy with this information? y/n: ")
+    if user_happy == "Y" or "y":
+        return
+    else: 
+        get_main_option()
+            
+
+
+
+
+
+
 
 
 def check_password_strength():
